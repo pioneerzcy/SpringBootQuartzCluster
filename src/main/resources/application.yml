@@ -1,0 +1,27 @@
+
+#server configuration
+server:
+  port: 9000
+  address: localhost
+
+
+#datasource config
+task.server.datasource:
+#    platform: mysql
+    url: "jdbc:mysql://localhost:3306/testdb"
+    username: test
+    password: 1234
+    driverClassName: com.mysql.jdbc.Driver
+#    max-active: 20
+#    max-idle: 10
+#    min-idle: 2
+#    initial-size: 3
+#    initialize: false
+#    testWhileIdle: ture
+#    testOnBorrow: true
+#    removeAbandoned: true
+#    removeAbandonedTimeout: true
+#    validationQuery: "select 1"
+#    validationInterval: 120000
+
+

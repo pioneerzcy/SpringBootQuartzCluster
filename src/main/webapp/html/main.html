@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>首页-TaskSchedule</title>
+<meta charset="utf-8">
+<!--↓↓↓ css ↓↓↓-->
+<link href="../static/css/bootstrap.css" rel="stylesheet" />
+<link href="../static/css/jade-style.css" rel="stylesheet" />
+<style type="text/css">
+</style>
+<!--↑↑↑ css ↑↑↑-->
+
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed "
+                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand header-con-p" href="#">TaskSchedule</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse"
+                id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search"
+                            aria-describedby="basic-addon2"> <span
+                            class="input-group-addon" id="basic-addon2"><span
+                            class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                    </div>
+                </form>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <!--↓↓↓ 内容 ↓↓↓-->
+                <div class="col-md-12">
+                    <h1 class="page-title">
+                        <span class="glyphicon glyphicon-pushpin"></span>&nbsp; 执行操作
+                    </h1>
+
+
+                    <!--↓↓↓ 面板-任务:添加\删除\修改  ↓↓↓-->
+                    <div class="panel panel-success">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading amber-font">
+                            <span class="glyphicon glyphicon-import"></span>&nbsp; 添加任务
+                        </div>
+                        <div class="panel-body">
+
+                            <form class="form-inline"><!-- start-form-Input:组名\任务名\触发器名\表达式名\地址-->
+                                <div class="form-group amber-font-20" style="margin-top:10px">
+                                    <input type=text class="form-control" id="input_task_group"
+                                                 placeholder="GroupName" />
+                                </div>
+                                <div class="form-group amber-font-20" style="margin-top:10px">
+                                    <input type=text class="form-control" id="input_job_name"
+                                                 placeholder="JobName" />
+                                </div>
+                                <div class="form-group amber-font-20" style="margin-top:10px">
+                                    <input type=text class="form-control" id="input_trigger_name"
+                                           placeholder="TriggerName" />
+                                </div>
+                                <div class="form-group amber-font-20" style="margin-top:10px">
+                                    <input type=text class="form-control" id="input_cron_expression"
+                                           placeholder="CronTriggerEx" />
+                                </div>
+                                <div class="form-group amber-font-20" style="margin-top:10px">
+                                    <input type=text class="form-control" id="input_app_address"
+                                           placeholder="Address" />
+                                </div>
+                            </form><!-- end-form-Input:组名\任务名\触发器名\表达式名\地址-->
+
+                            <form class="form-inline">
+                                <div class="form-group amber-font-20" style="margin-top:10px">
+                                    <input type="button"
+                                           class="btn btn-primary" id="btn_insert" value="Insert" />
+                                </div>
+                                <div class="form-group amber-font-20" style="margin-top:10px">
+                                    <input type="button"
+                                           class="btn btn-primary" id="btn_delete" value="Delete" />
+                                </div>
+                                <div class="form-group amber-font-20" style="margin-top:10px">
+                                    <input type="button"
+                                           class="btn btn-primary" id="btn_update" value="Update" />
+                                </div>
+                            </form>
+                            <!--<form class="form-inline">-->
+                                <!--<div class="form-group amber-font-20" style="margin-top:10px">-->
+                                    <!--<input type="button"-->
+                                           <!--class="btn btn-success" id="btn_pause" value="Pause" />-->
+                                <!--</div>-->
+                                <!--<div class="form-group amber-font-20" style="margin-top:10px">-->
+                                    <!--<input type="button"-->
+                                           <!--class="btn btn-success" id="btn_resume" value="Resume" />-->
+                                <!--</div>-->
+                            <!--</form>-->
+                            <form class="form-inline">
+                                <div class="form-group amber-font-20" style="margin-top:10px">
+                                    <input type="button"
+                                           class="btn btn-info" id="btn_startup" value="Startup" />
+                                </div>
+                                <div class="form-group amber-font-20" style="margin-top:10px">
+                                    <input type="button"
+                                           class="btn btn-info" id="btn_standby" value="Standby" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--↑↑↑ 面板-任务:添加\删除\修改  ↑↑↑-->
+
+                    <div class="panel panel-danger">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading amber-font">
+                            <span class="glyphicon glyphicon-export"
+                                  style="margin-bottom:10px;"></span>&nbsp; 任务列表
+
+                            <div class="btn-group" style="float:right;">
+                                <button type="button" class="btn btn-info"
+                                        id="pageCountSelect" name='20'>20/页</button>
+                                <button type="button"
+                                        class="btn btn-info dropdown-toggle"
+                                        data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" id="pageCountSelectUl">
+                                    <li><a name="10">10/页</a></li>
+                                    <li><a name="20">20/页</a></li>
+                                    <li><a name="30">30/页</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+
+                            <div id="test"></div>
+
+                            <div class=row>
+                                <div id="printTable" class="col-md-12 table-responsive"></div>
+                            </div>
+
+                            <div class=row>
+                                <div class="col-md-6" id="printPage"></div>
+                                <div class="col-md-6" id="printPage_f"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--↑↑↑ 内容 ↑↑↑-->
+            </div>
+        </div>
+    </div>
+
+    <div id="form_top" class="top_img"></div>
+
+
+
+    <!--↓↓↓ JavaScript ↓↓↓-->
+    <script src="../static/js/jquery-2.1.3.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/angular.min.js"></script>
+    <script src="../static/js/jade-script.js"></script>
+
+    <script type="text/javascript">
+        //start - 全局变量
+        var queryAllTask_url = "/task/query_all";
+        var insertTask_url = "/task/insert";
+        var deleteTask_url = "/task/delete";
+        var updateTask_url = "/task/update";
+
+        var startup_url = "/startup";
+        var standby_url = "/standby";
+        var restart_url = "/restart";
+
+        var task_group = $("#input_task_group").val("serverb");
+        var job_name = $("#input_job_name").val("job2");
+        var trigger_name = $("#input_trigger_name").val("trigger2_1");
+        var cron_expression = $("#input_cron_expression").val("25/60 * * * * ?");
+        var app_address = $("#input_app_address").val("localhost:9002");
+        //end - 全局变量
+
+
+
+        /**
+         * 任务列表显示 - 列元素参数to Show the Table
+         */
+        var columnNames={
+            "task_group":"GroupName",
+            "job_name":"JobName",
+            "trigger_name":"TriggerName",
+            "cron_expression":"CronTriggerEx",
+            "app_address":"Address"
+        }
+
+        /**
+         * 任务列表显示 - 请求\回调\显示
+         */
+        ask();//页面调入就执行该请求
+        function ask() {
+            $.post(queryAllTask_url,
+            function(data,status){
+                if(status=="success")
+                {
+                    var array = eval ("(" + data + ")");//string to Array
+                    printTable(columnNames, array);
+                }
+            });
+        }
+
+
+
+        /** - start - 按钮insert事件*/
+        $("#btn_insert").click(function() {
+             task_group = $("#input_task_group").val();
+             job_name = $("#input_job_name").val();
+             trigger_name = $("#input_trigger_name").val();
+             cron_expression = $("#input_cron_expression").val();
+             app_address = $("#input_app_address").val();
+            //发送请求
+            $.get(insertTask_url,{
+                task_group:task_group,
+                job_name:job_name,
+                trigger_name:trigger_name,
+                cron_expression:cron_expression,
+                app_address:app_address},
+                    function(data,status){
+                        if(status=="success")
+                        {
+                            alert(data);
+                            ask();
+                        }
+                    });
+
+        });
+        /** - end - 按钮insert事件*/
+
+        /** - start - 按钮delete事件*/
+        $("#btn_delete").click(function() {
+            task_group = $("#input_task_group").val();
+            job_name = $("#input_job_name").val();
+            trigger_name = $("#input_trigger_name").val();
+            cron_expression = $("#input_cron_expression").val();
+            app_address = $("#input_app_address").val();
+            //发送请求
+            $.get(deleteTask_url,{
+                        task_group:task_group,
+                        job_name:job_name,
+                        trigger_name:trigger_name,
+                        cron_expression:cron_expression,
+                        app_address:app_address},
+                    function(data,status){
+                        if(status=="success")
+                        {
+                            alert(data);
+                            ask();
+                        }
+                    });
+
+        });
+        /** - end - 按钮delete事件*/
+
+        /** - start - 按钮update事件*/
+        $("#btn_update").click(function() {
+            task_group = $("#input_task_group").val();
+            job_name = $("#input_job_name").val();
+            trigger_name = $("#input_trigger_name").val();
+            cron_expression = $("#input_cron_expression").val();
+            app_address = $("#input_app_address").val();
+            //发送请求
+            $.get(updateTask_url,{
+                        task_group:task_group,
+                        job_name:job_name,
+                        trigger_name:trigger_name,
+                        cron_expression:cron_expression,
+                        app_address:app_address},
+                    function(data,status){
+                        if(status=="success")
+                        {
+                            alert(data);
+                            ask();
+                        }
+                    });
+
+        });
+        /** - end - 按钮update事件*/
+
+        /**
+         * start - btn - line - 333333333333333333333333333333
+         */
+        $("#btn_startup").click(function() {
+            //发送请求
+            $.post(startup_url,
+                    function(data,status){
+                        if(status=="success")
+                        {
+                            alert(data);
+                            ask();//考虑到不通过UI直接存入数据中的任务,再次Startup中需要显示到列表中
+                        }
+                    });
+
+        });
+
+        $("#btn_standby").click(function() {
+            //发送请求
+            $.post(standby_url,
+                    function(data,status){
+                        if(status=="success")
+                        {
+                            alert(data);
+                        }
+                    });
+
+        });
+        /**
+         * end - btn - line - 333333333333333333333333333333
+         */
+
+        //        $("#btn_insert").click(function() {
+//            $("#test").load(insertTask_url,function(responseTxt,statusTxt,xhr){
+//                if(statusTxt=="success")
+//                {
+//                    //var obj = JSON.parse(responseTxt);//String to JSON
+//                    //var array = eval ("(" + responseTxt + ")");//string to Array
+//                    //alert(array[2].app_address);
+//
+//                    alert(responseTxt);
+//                }
+//                if(statusTxt=="error")
+//                    alert("Error: "+xhr.status+": "+xhr.statusText);
+//            });
+//        });
+
+
+
+
+
+    </script>
+    <!--↑↑↑ JavaScript ↑↑↑-->
+
+</body>
+</html>

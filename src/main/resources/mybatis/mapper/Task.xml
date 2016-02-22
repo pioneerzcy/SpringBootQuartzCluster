@@ -1,0 +1,43 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jadework.model.Task">
+
+
+    <!-- 查询所有数据 - 任务列表 -->
+    <select id="queryAllTask" resultType="Task">
+        SELECT * FROM job_list
+    </select>
+
+    <!-- 插入一条task数据 -->
+    <insert id="insertTask" parameterType="Task">
+        INSERT INTO job_list
+        (task_group, job_name, trigger_name, cron_expression, app_address)
+        VALUES
+        (#{task_group}, #{job_name}, #{trigger_name}, #{cron_expression}, #{app_address})
+    </insert>
+
+    <!-- 删除一条task数据 -->
+    <delete id="deleteTask" parameterType="Task">
+        DELETE FROM job_list
+        WHERE
+        task_group=#{task_group} AND
+        job_name=#{job_name} AND
+        trigger_name=#{trigger_name}
+    </delete>
+
+    <!-- 更新一条task数据 -->
+    <update id="updateTask" parameterType="Task">
+        UPDATE job_list
+        SET
+        cron_expression=#{cron_expression},
+        app_address=#{app_address}
+        WHERE
+        task_group=#{task_group} AND
+        job_name=#{job_name} AND
+        trigger_name=#{trigger_name}
+    </update>
+
+
+</mapper>
