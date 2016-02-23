@@ -5,6 +5,8 @@ import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class HttpResponseController {
+    private static final Logger logger = LoggerFactory.getLogger(HttpResponseController.class);
 
     @Resource
     HttpServletRequest request;
@@ -29,7 +32,9 @@ public class HttpResponseController {
         String name = request.getParameter("name");
         String message = request.getParameter("message");
 
-        System.out.println("---TaskScheduleServer:收到来自 "+name+" 的回调信息--"+message);
+        logger.info("---TaskScheduleServer: 收到来自 {} 的Job执行状态信息-M-{}",
+                name, message);
+
 
         return "收到返回信息";
     }
