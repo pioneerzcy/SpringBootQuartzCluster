@@ -2,6 +2,8 @@ package com.jadework.quartz;
 
 import com.squareup.okhttp.*;
 import org.quartz.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -13,6 +15,7 @@ import java.util.Date;
  */
 
 public class ScheduledJob implements Job {
+    private static final Logger logger = LoggerFactory.getLogger(ScheduledJob.class);
 
     public ScheduledJob() {
     }
@@ -32,6 +35,7 @@ public class ScheduledJob implements Job {
 
         RequestBody formBody = new FormEncodingBuilder()
                 .add("name","TaskScheduleServer")
+                .add("task_server_port","9010")
                 .add("job_name", jobKey.getName())
                 .add("task_group",jobKey.getGroup())
                 .build();
@@ -52,10 +56,11 @@ public class ScheduledJob implements Job {
                     throw new IOException("服务器端错误: " + response);
                 }
 
-                System.out.println(response.body().string());
+                //System.out.println(response.body().string());
+                logger.info(response.body().string());
             }
         });
-        System.out.println("TaskScheduleServer:请求执行"
+        logger.info("TaskScheduleServer:请求执行"
                 +jobKey.getGroup()+"_"+jobKey.getName()+" --- Date:"
                 +new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
         //--- 异步调用end ---

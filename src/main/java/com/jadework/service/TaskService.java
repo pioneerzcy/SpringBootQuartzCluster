@@ -1,11 +1,8 @@
 package com.jadework.service;
 
-import com.jadework.dao.TaskDao;
 import com.jadework.dao.inter.TaskDaoInter;
 import com.jadework.model.Task;
-import com.jadework.model.User;
 import com.jadework.quartz.ScheduledJob;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.quartz.*;
 
 import org.springframework.stereotype.Service;

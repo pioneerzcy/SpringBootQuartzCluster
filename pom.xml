@@ -5,7 +5,7 @@
 
   <groupId>com.jadework</groupId>
   <artifactId>springbootQuartz</artifactId>
-  <version>0.1.0</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
 
 
@@ -97,6 +97,18 @@
   </properties>
 
   <build>
+	  <!--&lt;!&ndash; 设定资源文件的存放地址，根据不同的环境设置不同的目录 &ndash;&gt;-->
+	  <!--<sourceDirectory>${basedir}/src/main/java</sourceDirectory>-->
+	  <!--<resources>-->
+		  <!--<resource>-->
+			  <!--<directory>${basedir}/src/main/resources</directory>-->
+		  <!--</resource>-->
+		  <!--<resource>-->
+			  <!--<directory>${basedir}/src/main/webapp</directory>-->
+		  <!--</resource>-->
+	  <!--</resources>-->
+	  <!--<outputDirectory>${basedir}/target/classes</outputDirectory>-->
+
 	<plugins>
 	  <plugin>
 		<groupId>org.springframework.boot</groupId>

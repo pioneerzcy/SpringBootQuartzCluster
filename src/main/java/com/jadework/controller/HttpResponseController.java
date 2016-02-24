@@ -32,6 +32,7 @@ public class HttpResponseController {
         String name = request.getParameter("name");
         String message = request.getParameter("message");
 
+        //System.out.println("---TaskScheduleServer:收到来自 "+name+" 的回调信息--"+message);
         logger.info("---TaskScheduleServer: 收到来自 {} 的Job执行状态信息-M-{}",
                 name, message);
 

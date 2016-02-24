@@ -28,7 +28,6 @@
     <!--</settings>-->
 
     <typeAliases>
-        <typeAlias type="com.jadework.model.User" alias="User"/>
         <typeAlias type="com.jadework.model.Task" alias="Task"/>
     </typeAliases>
 
